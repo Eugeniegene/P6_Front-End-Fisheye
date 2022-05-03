@@ -2,29 +2,49 @@ function photographerFactory(data) {
     const { name, id, city, country, tagline, price, portrait } = data;
 
     const picture = `assets/photographers/idPortrait/${portrait}`;
+    const alt ='Portrait de ${name}';
     const pageLink = "photographer.html?id=" + id;
 
-    function getUserCard() {
+    function getUserCard() {//création de l'élément
         console.log(getUserCard);
         const article = document.createElement( 'article' );/*création d'un article*/
         const urlPhotographer = document.createElement( 'a' );/*creation d'un lien*/
-        urlPhotographer.setAttribute("href", pageLink) /*la fonction va renvoyer un lien vers la page du photographe selectionné A UPDATER*/ 
+        urlPhotographer.classList.add("photographer-head");
+        urlPhotographer.setAttribute('id', id);
+        urlPhotographer.setAttribute('title', name);
+        urlPhotographer.setAttribute('href', `photographer.html?${id}`);
+
+        const urlPhotographerImg = document.createElement('div');
+        urlPhotographerImg.classList.add("photographer-head-img");
+
         const img = document.createElement( 'img' );
-        img.setAttribute("src", picture)
-        const h2 = document.createElement( 'h2' );
-        h2.textContent = name;
-        const h3 = document.createElement( 'h3' );
-        h3.textContent = city + ", " + country;
-        const p01 = document.createElement( 'p' );
-        p01.textContent = tagline;
-        const p02 = document.createElement( 'p' );
-        p02.textContent = price + "€/jour";
-        p02.className = 'price';
-        article.appendChild(img);
-        article.appendChild(h2);
-        article.appendChild(h3);
-        article.appendChild(p01);
-        article.appendChild(p02);
+        img.setAttribute("src", picture);
+        img.setAttribute('role', 'img');
+        img.setAttribute('alt', alt);
+
+        const nom = document.createElement( 'h2' );
+        nom.textContent = name;
+
+        const location = document.createElement( 'h3' );
+        location.textContent = city + ", " + country;
+
+        const citation = document.createElement( 'p' );
+        citation.textContent = tagline;
+        
+        const prix = document.createElement( 'p' );
+        prix.textContent = price + "€/jour";
+        prix.className = 'price';
+
+        const photographerTags = document.createElement( 'ul' );
+        photographerTags.classList.add("photographerTags");
+
+        //APPEND SECTION
+        article.appendChild(urlPhotographer);
+        urlPhotographer.appendChild(img);
+        urlPhotographer.appendChild(nom);
+        urlPhotographer.appendChild(location);
+        urlPhotographer.appendChild(citation);
+        urlPhotographer.appendChild(prix);
 
         return (article);
     }
