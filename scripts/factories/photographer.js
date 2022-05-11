@@ -2,13 +2,13 @@ function photographerFactory(data) {
     const { name, id, city, country, tagline, price, portrait } = data;
 
     const picture = `assets/photographers/idPortrait/${portrait}`;
-    const alt ='Portrait de ${name}';
+    const alt = `Portrait de ${name}`;
     const pageLink = "photographer.html?id=" + id;
 
-    function getUserCard() {//création de l'élément
+    function getUserCard() {//création de l'élément, il comportera toutes les données du photographe sélectionné
         console.log(getUserCard);
-        const article = document.createElement( 'article' );/*création d'un article*/
-        const urlPhotographer = document.createElement( 'a' );/*creation d'un lien*/
+        const article = document.createElement( 'article' );
+        const urlPhotographer = document.createElement( 'a' );
         urlPhotographer.classList.add("photographer-head");
         urlPhotographer.setAttribute('id', id);
         urlPhotographer.setAttribute('title', name);
