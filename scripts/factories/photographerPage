@@ -1,0 +1,99 @@
+function mediaListFactory(data) {
+    const { name, id, portrait, date, city, country, tagline, likes, price, title, image, video, photographerId } = data;
+
+    const mediasImages = `assets/photographers/${photographerId}/${image}`;
+    const mediasVideos = `assets/photographers/${photographerId}/${video}`;
+    const picture = `assets/photographers/idPortrait/${portrait}`;
+    const alt = `Portrait de ${name}`;
+    console.log(mediasImages);
+
+    function displayPhotographerData() {
+        console.log("displayPhotographerData");
+
+        const photographerData = document.createElement('div');
+
+        const img = document.createElement( 'img' );
+        img.setAttribute("src", picture);
+        img.setAttribute('role', 'img');
+        img.setAttribute('alt', alt);
+        img.setAttribute('id','portraitPicture')
+
+        const nom = document.createElement( 'h2' );
+        nom.textContent = name;
+        nom.setAttribute("name", nom)
+
+        const location = document.createElement( 'h3' );
+        location.textContent = city + ", " + country;
+        location.setAttribute ("location", location)
+
+        const citation = document.createElement( 'p' );
+        citation.textContent = tagline;
+        citation.className="tagline";
+
+        photographerData.appendChild(img);
+        photographerData.appendChild(nom);
+        photographerData.appendChild(location);
+        photographerData.appendChild(citation);;
+
+        return photographerData;
+    }
+
+    /********************NOUVEAU TEST******************* */
+    function mediasCardDOM() {
+
+        const {title, likes} = data;
+        
+        const carteMedia = document.createElement("article");
+        carteMedia.classList.add ("carte_media");
+        carteMedia.setAttribute("title", "Permet d'ouvrir une lightbox");
+
+        
+        if("video" in data){
+            const photoVideo = document.createElement("video");
+            const source = document.createElement("source");
+
+            photoVideo.setAttribute("tabindex", "4");
+            photoVideo.setAttribute("controls", " ");
+            source.className = "mediaImg";
+            source.setAttribute("src",mediasVideos);
+            source.setAttribute("alt", mediasVideos);
+            source.setAttribute("type", "video/mp4");
+
+            carteMedia.appendChild(photoVideo);
+            photoVideo.appendChild(source);
+        }
+        else {
+            const img = document.createElement( "img" );
+            img.setAttribute("tabindex", "4");
+            img.setAttribute("src",mediasImages);
+            img.setAttribute("alt", "photo" + " " +title);
+            img.className = "mediaImg";
+
+            carteMedia.appendChild(img);
+        }
+
+        const infoPhoto = document.createElement("div");
+        const h2 = document.createElement( "h2" );
+        const nbreLike = document.createElement("span");
+        const spanCoeur = document.createElement("span");
+        const coeur = document.createElement("i");
+
+        infoPhoto.classList.add("info_photo");
+        h2.textContent = title;
+        nbreLike.textContent = likes;
+        nbreLike.setAttribute("title", "nombre de like de la photo");
+        spanCoeur.className = "coeur";
+        coeur.className = "fas fa-heart";
+        coeur.setAttribute("aria-label", "icone coeur cliquable");
+        coeur.setAttribute("tabindex", "4");
+
+        spanCoeur.appendChild(coeur);
+        infoPhoto.appendChild(h2);
+        infoPhoto.appendChild(nbreLike);
+        infoPhoto.appendChild(spanCoeur);
+        carteMedia.appendChild(infoPhoto);
+
+        return carteMedia;
+    }
+    return { id, name, date, likes, title, image, video, photographerId, mediasCardDOM, displayPhotographerData }
+}
