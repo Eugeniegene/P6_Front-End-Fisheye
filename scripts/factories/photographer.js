@@ -48,5 +48,36 @@ function photographerFactory(data) {
 
         return (article);
     }
-    return { name, picture, getUserCard }
+    
+    function displayPhotographerData() {
+        console.log("displayPhotographerData");
+
+        const photographerData = document.createElement('div');
+
+        const img = document.createElement( 'img' );
+        img.setAttribute("src", picture);
+        img.setAttribute('role', 'img');
+        img.setAttribute('alt', alt);
+        img.setAttribute('id','portraitPicture')
+
+        const nom = document.createElement( 'h2' );
+        nom.textContent = name;
+        nom.setAttribute("name", nom)
+
+        const location = document.createElement( 'h3' );
+        location.textContent = city + ", " + country;
+        location.setAttribute ("location", location)
+
+        const citation = document.createElement( 'p' );
+        citation.textContent = tagline;
+        citation.className="tagline";
+
+        photographerData.appendChild(img);
+        photographerData.appendChild(nom);
+        photographerData.appendChild(location);
+        photographerData.appendChild(citation);;
+
+        return photographerData;
+    }
+    return { name, picture, getUserCard, displayPhotographerData }
 }
