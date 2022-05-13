@@ -85,10 +85,22 @@ header a
     color:black;
 }
 
+#contact_modal
+{
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    right :0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
-    width: 669px;
+    width: 669px; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -145,4 +157,61 @@ form input {
 form div .message
 {
     height:170px;
+}
+/******* GALLERY *******/ 
+
+.photograph-media
+{
+    margin: 100px;
+    display: grid;
+    width: 95%;
+    grid-template-columns: auto auto auto;
+    row-gap: 50px;
+}
+
+#main .carte_media 
+{
+    margin: 0;
+    width: 370px;
+}
+
+#main .carte_media video 
+{
+    width: 390px;
+    height: 390px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+#main .carte_media img
+{
+    width: 390px;
+    height: 390px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.info_photo
+{
+    display: flex;
+    margin: 0;
+    align-items: center;
+    width: 100%;
+    margin-top: 5px;
+}
+.info_photo h2
+{
+    margin-left: 0;
+    color: #911C1C;
+}
+.info_photo .title_nbr
+{
+    margin-left: 5px;
+    margin-right: 10px;
+    font-size: 20px;
+}
+.info_photo .heart
+{
+    margin-left: 0;
+    margin-right: -5px;
+    color: #911C1C;
 }
