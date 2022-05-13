@@ -15,30 +15,46 @@ async function getPhotographers () {                                  //récupé
     return photographers;
 }
 
-async function displayData(photographers,iDPhotographer) {
+async function getMedia () {                                  //récupération du JSON
+    const response = await fetch ("data/photographers.json");
+    const media = await response.json();
+    return media;
+}
+
+async function displayData(photographers, medias, iDPhotographer) {
     const photographersSection = document.querySelector(".photograph-header");
+    const photographersMedia = document.querySelector(".photograph-media");
 
     photographers.forEach((photographer) => {
         if(iDPhotographer == photographer.id){
-        const photographerModel = mediaListFactory(photographer);
-        //const mediasCardDOM = photographerModel.mediasCardDOM();
-        //photographersSection.appendChild(mediasCardDOM);
+            
+        const photographerModel = photographerFactory(photographer);
         const displayPhotographerData = photographerModel.displayPhotographerData();
         photographersSection.appendChild(displayPhotographerData);
+        medias.forEach((media)=> {
+            if(iDPhotographer == media.photographerId){
+            const modelMedia = mediaListFactory(media);
+            console.log(modelMedia);
+            const mediasCardDOM = modelMedia.mediasCardDOM();
+            photographersMedia.appendChild(mediasCardDOM);
+            }
+        });
+        
         }
     });
 };
 
+
 async function init(iDPhotographer) {
     // Récupère les datas du photographe
     const { photographers } = await getPhotographers();
-    displayData(photographers,iDPhotographer);
+    const { media } = await getMedia();
+    displayData(photographers, media, iDPhotographer);
 };
-console.log(window.location.href);
+
+
 const url = window.location.href;
 const urlArray = url.split('?');
-console.log(urlArray);
 const iDPhotographerStart = urlArray[urlArray.length-1];
-console.log(iDPhotographerStart);
-init(iDPhotographerStart);
 
+init(iDPhotographerStart);
