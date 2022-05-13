@@ -1,34 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5f2e0ae9aa.js" crossorigin="anonymous"></script>
     <title>Fisheye - photographe </title>
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="./index.html" aria-label="lien vers la page d'acceuil">
+        <img src="assets/images/logo.png" class="logo" /> </a>
     </header>
     <main id="main">
       <div class="photograph-header">
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
+      <div class="photograph-media">
+      </div>
     </main>
     <div id="contact_modal">
       <div class="modal">
         <header>
-          <h2 id="contact_modal-photographer-name">Name</h2>
+          <h2 id="contact_modal-photographer-name">Contactez-moi</h2>
           <a href=""><img src="assets/icons/close.svg" alt ="Close" class="contact_modal-exit"/></a>
         </header>
         <form>
           <div>
             <label for="firstname">Prénom</label>
-            <input class="text-control" type="text" id="firstname" name="firstname" /><br>
+            <input class="text-control" type="text" id="firstname" name="prénom" /><br>
           </div>
           <div>
             <label for="lastname">Nom</label>
-            <input class="text-control" type="text" id="lastname" name="lastname" /><br>
+            <input class="text-control" type="text" id="lastname" name="nom" /><br>
           </div>
           <div>
             <label for="email">E-mail</label>
@@ -42,6 +46,8 @@
         </form>
 			</div>
 		</div>
+    <script src="scripts/factories/photographer.js"></script>
+    <script src="scripts/factories/photographerPage.js"></script>
     <script src="scripts/utils/contactForm.js"></script>
   </body>
 </html>
