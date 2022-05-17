@@ -16,8 +16,19 @@
       <div class="photograph-header">
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
+      <div class="searcher-bloc">
+        <div class="sort-selector" aria-label="selecteur de filtre">
+          <p class="sort">Trier par</p>
+          <select class="searcher-box" tabindex="2">
+            <option class="populaire" value="pop">Popularité</option>
+            <option class="date" value="date">Date</option>
+            <option class="titre" value="titre">Titre</option>
+          </select>
+        </div>
+      </div>
       <div class="photograph-media">
       </div>
+      <div class = informationsupp aria-label="nombre de likes et prix par jour"> </div>
     </main>
     <div id="contact_modal">
       <div class="modal">
@@ -44,10 +55,12 @@
           </div>
           <button class="send_btn" aria-label="Send" onclick="sendModal()" id="send">Envoyer</button>
         </form>
-			</div>
-		</div>
+     </div>
+    </div>
     <script src="scripts/factories/photographer.js"></script>
-    <script src="scripts/factories/photographerPage.js"></script>
+    <script src="scripts/factories/media.js"></script>
+    <script src="scripts/utils/searcher.js"></script>
+    <script src="scripts/pages/photographer.js"></script>  
     <script src="scripts/utils/contactForm.js"></script>
   </body>
 </html>
