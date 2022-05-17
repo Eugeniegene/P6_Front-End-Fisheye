@@ -75,9 +75,28 @@ function photographerFactory(data) {
         photographerData.appendChild(img);
         photographerData.appendChild(nom);
         photographerData.appendChild(location);
-        photographerData.appendChild(citation);;
+        photographerData.appendChild(citation);
 
         return photographerData;
     }
-    return { name, picture, getUserCard, displayPhotographerData }
+
+    function informationsupp(){
+    
+        const informationSuppl = document.querySelector(".informationsupp");
+        const like = document.createElement("h4")
+        const emoji = document.createElement("i");
+        const prix = document.createElement("h4");
+    
+        like.id = "all-likes";
+        emoji.className = "fas fa-heart fa-lg";
+        prix.textContent = price + "€/jour";
+        prix.id = "prix";
+        
+        informationSuppl.appendChild(like);
+        informationSuppl.appendChild(emoji);
+        informationSuppl.appendChild(prix);
+        
+    }
+
+    return { name, picture, getUserCard, displayPhotographerData,informationsupp }
 }
