@@ -1,12 +1,10 @@
-//récupération du JSON - Photographers 
-async function getPhotographers () {                                  
+async function getPhotographers () {                                  //récupération du JSON
     const response = await fetch ("data/photographers.json");
     const photographers = await response.json();
     return photographers;
 }
 
-//récupération du JSON - MEDIAS
-async function getMedia () {                                  
+async function getMedia () {                                  //récupération du JSON
     const response = await fetch ("data/photographers.json");
     const media = await response.json();
     return media;
@@ -23,15 +21,20 @@ async function displayData(photographers, medias, iDPhotographer) {
         const displayPhotographerData = photographerModel.displayPhotographerData();
         const informationsupp = photographerModel.informationsupp();
         photographersSection.appendChild(displayPhotographerData);
+        let all_likes = 0;
+        let i = 0;
         medias.forEach((media)=> {
             if(iDPhotographer == media.photographerId){
             const modelMedia = mediaListFactory(media);
             console.log(modelMedia);
             const mediasCardDOM = modelMedia.mediasCardDOM();
             photographersMedia.appendChild(mediasCardDOM);
+            all_likes += media.likes;
             }
         });
-        const displayDataMedia = photographerModel.displayDataMedia();
+        const all_likesElement = document.getElementById("all-likes");
+        console.log ('all-likes');
+        all_likesElement.innerHTML= all_likes;
         }
     });
 };
@@ -44,8 +47,17 @@ async function init(iDPhotographer) {
     displayData(photographers, media, iDPhotographer);
 };
 
+
+
 const url = window.location.href;
 const urlArray = url.split('?');
 const iDPhotographerStart = urlArray[urlArray.length-1];
+
+const menuSelect = document.getElementById("searcher-box");
+console.log("toto", menuSelect);
+menuSelect.addEventListener("change",async function (e) {
+    const {media} = await getMedia();
+    displayDataMedia(media,iDPhotographerStart, e.target.value);
+});
 
 init(iDPhotographerStart);
