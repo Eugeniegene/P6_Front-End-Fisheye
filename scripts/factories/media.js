@@ -2,16 +2,13 @@ function mediaListFactory(data) {
     const { id, photographerId, title, image, video, likes, date } = data;
 
     const mediasImages = `assets/photographers/${photographerId}/${image}`;
-    console.log(mediasImages);
     const mediasVideos = `assets/photographers/${photographerId}/${video}`;
-    console.log(mediasVideos);
 
-    /********************NOUVEAU TEST******************* */
     function mediasCardDOM() {
         
         const carteMedia = document.createElement("article");
         carteMedia.classList.add ("carte_media");
-        carteMedia.setAttribute("title", "Permet d'ouvrir une lightbox");
+        carteMedia.setAttribute("title", "Ouverture lightbox");
         
         if("video" in data){
             const photoVideo = document.createElement("video");
@@ -64,7 +61,7 @@ function mediaListFactory(data) {
     return { id, date, likes, title, image, video, mediasCardDOM }
 }
 
-async function getPhotographers () {                                  d
+async function getPhotographers () {                                  
     const response = await fetch ("data/photographers.json");
     const photographers = await response.json();
     return photographers;
