@@ -19,14 +19,36 @@
       <div class="searcher-bloc">
         <div class="sort-selector" aria-label="selecteur de filtre">
           <p class="sort">Trier par</p>
-          <select class="searcher-box" tabindex="2">
-            <option class="populaire" value="pop">Popularité</option>
+          <select id="searcher-box" tabindex="3">
+            <option class="populaire" value="populaire">Popularité</option>
             <option class="date" value="date">Date</option>
             <option class="titre" value="titre">Titre</option>
           </select>
         </div>
       </div>
       <div class="photograph-media">
+      </div>
+      <div id="lightbox"aria-label="Image closeup view" role="dialog">
+            <div class="lightbox_content">
+                <button class="lightbox_close" aria-label="Close dialog">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <button class="previous" aria-label="Image précédente">
+                    <i class="fa-solid fa-angle-left"></i>
+                </button>
+                <div>
+                    <img class="lightbox_image" alt=""/>
+                    <video controls autoplay class="lightbox_video">
+                        <track />
+                    </video>
+                    <p class="lightbox_title"></p>
+                </div>
+
+                <button class="next" aria-label="Image suivante">
+                    <i class="fa-solid fa-angle-right"></i>
+                </button>
+            </div>
+        </div>
       </div>
       <div class = informationsupp aria-label="nombre de likes et prix par jour"> </div>
     </main>
@@ -36,30 +58,37 @@
           <h2 id="contact_modal-photographer-name">Contactez-moi</h2>
           <a href=""><img src="assets/icons/close.svg" alt ="Close" class="contact_modal-exit"/></a>
         </header>
-        <form>
-          <div>
-            <label for="firstname">Prénom</label>
-            <input class="text-control" type="text" id="firstname" name="prénom" /><br>
+        <form id="form" name="reserve" action="index.html" method="get" onsubmit="return validate();">
+          <div class="formData" data-error="" data-error-visible="false">
+            <label for="first-name">Prénom</label>
+            <input class="text-control" type="text" id="first-name" name="prénom" /><br>
           </div>
-          <div>
-            <label for="lastname">Nom</label>
-            <input class="text-control" type="text" id="lastname" name="nom" /><br>
+          <div class="formData" data-error="" data-error-visible="false">
+            <label for="last-name">Nom</label>
+            <input class="text-control" type="text" id="last-name" name="nom" /><br>
           </div>
-          <div>
+          <div class="formData" data-error="" data-error-visible="false">
             <label for="email">E-mail</label>
-            <input class="text-control" type="email" id="email" name="email" /><br>
+            <input class="text-control" type="text" id="email" name="email" /><br>
           </div>
-          <div>
+          <div class="formData" data-error="" data-error-visible="false">
             <label for="message">Votre message</label>
             <input class="message" type="text" id="message" name="votre message" /><br>
           </div>
-          <button class="send_btn" aria-label="Send" onclick="sendModal()" id="send">Envoyer</button>
+          <button class="send_btn" type="submit" aria-label="Send" id="send">Envoyer</button>
         </form>
-     </div>
-    </div>
+        <div class="confirmation-bloc">
+          <div class="submitted-form">
+            <span class="close-modal-submit"></span>
+              <div class="confirm-message"> Merci pour </br> votre message !</div>
+          </div>
+        </div>
+			</div>
+		</div>
     <script src="scripts/factories/photographer.js"></script>
     <script src="scripts/factories/media.js"></script>
     <script src="scripts/utils/searcher.js"></script>
+    <script src="scripts/utils/lightbox.js"></script>
     <script src="scripts/pages/photographer.js"></script>  
     <script src="scripts/utils/contactForm.js"></script>
   </body>
