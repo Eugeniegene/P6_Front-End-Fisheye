@@ -1,5 +1,4 @@
 function displayDataMedia(medias,photographerId, value) { 
-    console.log(value);
     switch(value){       
             
         case "populaire" : // retournera les médias en fonction du nombre de likes
@@ -22,7 +21,6 @@ function displayDataMedia(medias,photographerId, value) {
     } 
 
     const cartesMedias = document.querySelector(".photograph-media");
-    console.log(cartesMedias);
     cartesMedias.innerHTML = "";
 
     let all_likes = 0;
@@ -36,4 +34,28 @@ function displayDataMedia(medias,photographerId, value) {
             all_likes += media.likes;
         }
     })
+} 
+
+function likeClick()
+{
+    const hearts = document.querySelectorAll(".heart");
+    hearts.forEach(e => {
+        //EVENEMENT AU CLICK
+        e.addEventListener("click", function(){
+            const nbreLike = e.parentElement.children[1];
+            nbreLike.textContent++;
+            let all_likes = document.getElementById("all-likes");
+            all_likes.innerHTML++; 
+        });
+    
+        //EVENEMENT AU CLAVIER AVEC TOUCHE ENTREE
+        e.addEventListener("keypress", function(){
+    
+            const nbreLike = e.parentElement.children[1];
+        
+            nbreLike.textContent++;
+            let all_likes = document.getElementById("all-likes");
+            all_likes.innerHTML++;                  
+        });
+    });
 }
