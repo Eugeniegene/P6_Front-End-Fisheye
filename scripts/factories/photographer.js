@@ -6,7 +6,6 @@ function photographerFactory(data) {
     const pageLink = "photographer.html?id=" + id;
 
     function getUserCard() {//création de l'élément, il comportera toutes les données du photographe sélectionné
-        console.log(getUserCard);
         const article = document.createElement( 'article' );
         const urlPhotographer = document.createElement( 'a' );
         urlPhotographer.classList.add("photographer-head");
@@ -50,7 +49,6 @@ function photographerFactory(data) {
     }
     
     function displayPhotographerData() {
-        console.log("displayPhotographerData");
 
         const photographerData = document.createElement('div');
 
