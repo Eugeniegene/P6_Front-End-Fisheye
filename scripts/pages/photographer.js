@@ -35,6 +35,7 @@ async function displayData(photographers, medias, iDPhotographer) {
         all_likesElement.innerHTML= all_likes;
         }
     });
+    likeClick();
 };
 
 async function init(iDPhotographer) {
