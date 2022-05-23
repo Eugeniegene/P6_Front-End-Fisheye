@@ -54,7 +54,6 @@ const urlArray = url.split('?');
 const iDPhotographerStart = urlArray[urlArray.length-1];
 
 const menuSelect = document.getElementById("searcher-box");
-console.log("toto", menuSelect);
 menuSelect.addEventListener("change",async function (e) {
     const {media} = await getMedia();
     displayDataMedia(media,iDPhotographerStart, e.target.value);
