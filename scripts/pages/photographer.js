@@ -26,14 +26,12 @@ async function displayData(photographers, medias, iDPhotographer) {
         medias.forEach((media)=> {
             if(iDPhotographer == media.photographerId){
             const modelMedia = mediaListFactory(media);
-            console.log(modelMedia);
             const mediasCardDOM = modelMedia.mediasCardDOM();
             photographersMedia.appendChild(mediasCardDOM);
             all_likes += media.likes;
             }
         });
         const all_likesElement = document.getElementById("all-likes");
-        console.log ('all-likes');
         all_likesElement.innerHTML= all_likes;
         }
     });
