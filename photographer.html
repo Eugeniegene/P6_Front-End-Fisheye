@@ -31,21 +31,20 @@
       <div id="lightbox"aria-label="Image closeup view" role="dialog">
             <div class="lightbox_content">
                 <button class="lightbox_close" aria-label="Close dialog">
-                    <i class="fa-solid fa-xmark"></i>
+                    <i class="fa-solid fa-xmark fa-2x"></i>
                 </button>
-                <button class="previous" aria-label="Image précédente">
-                    <i class="fa-solid fa-angle-left"></i>
+                <button id="previous" aria-label="Image précédente">
+                    <i class="fa-solid fa-angle-left fa-3x"></i>
                 </button>
-                <div>
-                    <img class="lightbox_image" alt=""/>
-                    <video controls autoplay class="lightbox_video">
+                <div class ='media_display_lightbox'>
+                    <img id='lightbox_image_photographer' class="lightbox_image" alt=""/>
+                    <video controls autoplay id="lightbox_video_photographer">
                         <track />
                     </video>
-                    <p class="lightbox_title"></p>
+                    <p id="lightbox_title"></p>
                 </div>
-
-                <button class="next" aria-label="Image suivante">
-                    <i class="fa-solid fa-angle-right"></i>
+                <button id="next" aria-label="Image suivante">
+                    <i class="fa-solid fa-angle-right fa-3x"></i>
                 </button>
             </div>
         </div>
@@ -83,8 +82,8 @@
               <div class="confirm-message"> Merci pour </br> votre message !</div>
           </div>
         </div>
-			</div>
-		</div>
+      </div>
+   </div>
     <script src="scripts/factories/photographer.js"></script>
     <script src="scripts/factories/media.js"></script>
     <script src="scripts/utils/searcher.js"></script>
