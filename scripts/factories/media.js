@@ -15,13 +15,11 @@ function mediaListFactory(data) {
             const photoVideo = document.createElement("video");
             const source = document.createElement("source");
             photoVideo.addEventListener("play", async function(){
-                console.log('toto');
                 document.getElementById("lightbox").style.display = "block";
                 const video = document.getElementById("lightbox_video_photographer");
                 video.style.display="block";
                 video.setAttribute("tabindex", "4");
                 video.setAttribute("src",mediasVideos);
-                console.log(video);
                 const pictureTitle = document.getElementById('lightbox_title');
                 pictureTitle.textContent=title;
 
