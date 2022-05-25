@@ -4,6 +4,7 @@ function mediaListFactory(data) {
     const mediasImages = `assets/photographers/${photographerId}/${image}`;
     const mediasVideos = `assets/photographers/${photographerId}/${video}`;
 
+    /********************NOUVEAU TEST******************* */
     function mediasCardDOM() {
         
         const carteMedia = document.createElement("article");
@@ -13,23 +14,51 @@ function mediaListFactory(data) {
         if("video" in data){
             const photoVideo = document.createElement("video");
             const source = document.createElement("source");
+            photoVideo.addEventListener("play", async function(){
+                console.log('toto');
+                document.getElementById("lightbox").style.display = "block";
+                const video = document.getElementById("lightbox_video_photographer");
+                video.style.display="block";
+                video.setAttribute("tabindex", "4");
+                video.setAttribute("src",mediasVideos);
+                console.log(video);
+                const pictureTitle = document.getElementById('lightbox_title');
+                pictureTitle.textContent=title;
+
+                const image_lightbox = document.getElementById("lightbox_image_photographer");
+                image_lightbox.style.display = "none";
+            })
 
             photoVideo.setAttribute("tabindex", "4");
             photoVideo.setAttribute("controls", " ");
-            source.className = "mediaImg";
+            source.className = mediasVideos;
             source.setAttribute("src",mediasVideos);
             source.setAttribute("alt", mediasVideos);
             source.setAttribute("type", "video/mp4");
-
-            carteMedia.appendChild(photoVideo);
+            
             photoVideo.appendChild(source);
+            carteMedia.appendChild(photoVideo);
+            
+
         }
         else {
             const img = document.createElement( "img" );
+            img.addEventListener("click", function(){
+                document.getElementById("lightbox").style.display = "block";
+                const img = document.getElementById("lightbox_image_photographer");
+                img.setAttribute("tabindex", "4");
+                img.setAttribute("src",mediasImages);
+                img.style.display="block";
+                const pictureTitle = document.getElementById('lightbox_title');
+                pictureTitle.textContent=title;
+                
+                const video_lightbox = document.getElementById("lightbox_video_photographer");
+                video_lightbox.style.display = "none";
+            })
             img.setAttribute("tabindex", "4");
             img.setAttribute("src",mediasImages);
             img.setAttribute("alt", "photo" + " " +title);
-            img.className = "mediaImg";
+            img.className = "mediaImg"; 
 
             carteMedia.appendChild(img);
         }
