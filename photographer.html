@@ -10,7 +10,7 @@
   <body>
     <header>
       <a href="./index.html" aria-label="lien vers la page d'acceuil">
-        <img src="assets/images/logo.png" class="logo" /> </a>
+        <img src="assets/images/logo.png" class="logo" alt="logo de Fisheye"/></a>
     </header>
     <main id="main">
       <div class="photograph-header">
@@ -52,7 +52,7 @@
       <div class="searcher-bloc">
         <div class="sort-selector" aria-label="selecteur de filtre">
           <p class="sort">Trier par</p>
-          <select id="searcher-box" tabindex="3">
+          <select id="searcher-box" tabindex="3" title="Selection" aria-label="select">
             <option class="populaire" value="populaire">Popularité</option>
             <option class="date" value="date">Date</option>
             <option class="titre" value="titre">Titre</option>
@@ -64,10 +64,10 @@
       <div id="lightbox"aria-label="Image closeup view" role="dialog">
             <div class="lightbox_content">
                 <button class="lightbox_close" aria-label="Close dialog">
-                    <i class="fa-solid fa-xmark fa-2x"></i>
+                    <em class="fa-solid fa-xmark fa-2x"></em>
                 </button>
                 <button id="previous" class="previous" aria-label="Image précédente">
-                    <i class="fa-solid fa-angle-left fa-3x"></i>
+                    <em class="fa-solid fa-angle-left fa-3x"></em>
                 </button>
                 <div class ='media_display_lightbox'>
                     <img id='lightbox_image_photographer' class="lightbox_image" alt=""/>
@@ -77,7 +77,7 @@
                     <p id="lightbox_title"></p>
                 </div>
                 <button id="next" aria-label="Image suivante">
-                    <i class="fa-solid fa-angle-right fa-3x"></i>
+                    <em class="fa-solid fa-angle-right fa-3x"></em>
                 </button>
             </div>
         </div>
