@@ -1,7 +1,12 @@
+.logo
+{
+    margin-left: 100px;
+}
 header a
 {
    display: flex;
    left: 0;
+   margin: 0;
 }
 
 #portraitPicture
@@ -16,6 +21,13 @@ header a
     margin-top: 25px;
 }
 
+#main .modal .contact_name h2
+{
+    color: #000000;
+    margin-top: 0;
+    left:590px;
+    top: 40px;
+}
 #main .photograph-header h2
 {
     color: #D3573C;
@@ -80,14 +92,26 @@ header a
     margin:0;
     margin-top: 10px;
 }
+
+.send_btn:focus 
+{
+    outline: 0;
+    border : #000000 solid 3px;
+    border-radius: 5px;
+}
 .contact_button:hover {
     background-color: #DB8876;
-    color:black;
 }
-
+.contact_button:focus 
+{
+    outline: 0;
+    background-color: #DB8876;
+    border : #000000 solid 3px;
+    border-radius: 5px;
+}
 #contact_modal
 {
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0.212);
     position: fixed;
     z-index: 1;
     left: 0;
@@ -96,11 +120,12 @@ header a
     padding-top: 25px;
     height: 100%;
     width: 100%;
-    max-width: 1850px;
+    max-width: 1910px;
     overflow: auto;
 }
 .modal {
     border-radius: 5px;
+    box-shadow: 0px 5px 15px 4px rgba(0,0,0,0.37);
     background-color: #DB8876;
     width: 33%; 
     height : 760px;
@@ -119,7 +144,12 @@ header a
 
 .modal header img {
     cursor: pointer;
-    margin-right: 0;
+    position: absolute;
+}
+
+.contact_modal-exit
+{
+    margin-left: 590px;
 }
 
 .modal header h2 {
@@ -133,6 +163,7 @@ form {
     width: 100%;
     flex-direction: column;
     align-items: flex-start;
+    margin-top: 40px;
 }
 
 form label {
@@ -232,6 +263,10 @@ form div .message
     cursor: pointer;
     font-size: 18px;
 }
+#searcher-box:focus
+{
+    border: 4px solid rgb(0, 0, 0) ;
+}
 
 .searcher-box option
 {
@@ -261,14 +296,37 @@ form div .message
     height: 390px;
     object-fit: cover;
     border-radius: 5px;
+    transition:0.2s;
 }
 
+#main .carte_media video:hover 
+{
+    border: 3px solid rgb(0, 0, 0);
+    box-shadow: 0px 3px 15px -3px #000000;
+}
+#main .carte_media video:focus 
+{
+    outline: 0;
+    border: 3px solid rgb(206, 90, 90);
+}
 #main .carte_media img
 {
     width: 390px;
     height: 390px;
     object-fit: cover;
     border-radius: 5px;
+    transition:0.2s;
+}
+
+#main .carte_media img:hover 
+{
+    border: 3px solid rgb(0, 0, 0);
+    box-shadow: 0px 3px 15px -3px #000000;
+}
+#main .carte_media img:focus 
+{
+    outline: 0;
+    border: 3px solid rgb(206, 90, 90);
 }
 .info_photo
 {
@@ -294,6 +352,20 @@ form div .message
     margin-left: 0;
     margin-right: -5px;
     color: #911C1C;
+    transition:0.2s;
+}
+.info_photo .heart:hover
+{
+    margin-left: 0;
+    margin-right: -5px;
+    color: #a50101;
+    transform: scale(1.4);
+}
+.info_photo .heart i:focus
+{
+    outline :0;
+    margin-left: 0;
+    box-shadow: 0px 5px 15px 4px rgba(168, 3, 3, 0.808);
 }
 
 /** indication du nombre de likes et prix **/
@@ -327,6 +399,7 @@ form div .message
     display:none;
     position: fixed;
     top: 0;
+    left: 0;
     margin: 0 auto;
     width: 100%;
     z-index: 999;
@@ -336,30 +409,45 @@ form div .message
     justify-content: center;
 }
 
-.lightbox_close {
+.lightbox_close 
+{
     color: #911C1C;
     position: absolute;
     top: 10px;
-    right: 35px;
+    right: 100px;
     font-size: 35px;
     font-weight: bold;
     background: none;
     border: none;
     cursor: pointer;
-  }
-.lightbox_content {
+    transition: 0.3s;
+}
+
+.fa-xmark
+{
+    background-color: white;
+    transition: 0.3s;
+}
+.fa-xmark:hover
+{
+    transform: scale(1.5);
+}
+
+.lightbox_content 
+{
     display: flex;
     justify-content: center;
     width: 70%;
     background-color: white;
 }
 #next,
-#previous {
+#previous 
+{
     cursor: pointer;
+    position: absolute;
     top: 50%;
     width: auto;
-    padding: 16px;
-    margin-top: -145px;
+    margin-top: -85px;
     color: #911C1C;
     background: none;
     border: none;
@@ -369,25 +457,43 @@ form div .message
     border-radius: 0 3px 3px 0;
     user-select: none;
     -webkit-user-select: none;
+    transition: 0.3s;
+} 
+#next
+{
+    right: 100px;
+}
+#previous
+{
+    left: 100px;
+}
+
+#next:hover,
+#previous:hover 
+{
+    transform: scale(1.5);
+}
+
+.media_display_lightbox 
+{
+    margin-top: -20px;
 }
 
 .media_display_lightbox img
 {
-    width:850px;
-    height:700px;
-    object-fit: cover;
+    /*width:900px;*/
+    height:800px;
+    /*object-fit: cover;*/
     margin-top: 50px;
-    margin-left: 70px;
     border-radius: 5px;
 }
 
 .media_display_lightbox video
 {
-    width:850px;
-    height:700px;
-    object-fit: cover;
+    /*width:900px;*/
+    height:800px;
+    /*object-fit: cover;*/
     margin-top: 50px;
-    margin-left: 70px;
     border-radius: 5px;
 }
 
@@ -396,6 +502,5 @@ form div .message
     font-size: 30px;
     color: #901C1C;
     font-weight: bold;
-    margin-left: 70px;
     margin-top: 10px;
 }
