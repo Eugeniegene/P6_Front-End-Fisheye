@@ -1,3 +1,23 @@
+function displayPhotographerMedia(medias, photographerId){
+    photographersMedia.innerHTML = "";
+    let all_likes = 0;
+    let position = 0;
+    photographerMedias = [];
+    const all_likesElement = document.getElementById("all-likes");
+    medias.forEach((media)=> {
+        if (media.photographerId == photographerId){
+            const mediaModel = mediaListFactory (media);
+            const userMediaDOM = mediaModel.mediasCardDOM(position);
+            photographersMedia.appendChild(userMediaDOM);
+            all_likes += media.likes;
+            photographerMedias.push(mediaModel);
+            position++;
+        }
+    });
+    all_likesElement.innerHTML= all_likes;
+}
+
+//************MEDIA SORTER FUNCTION BY NAME************//
 function displayDataMedia(medias,photographerId, value) { 
     switch(value){       
             
@@ -19,43 +39,28 @@ function displayDataMedia(medias,photographerId, value) {
             })
             break;
     } 
-
-    const cartesMedias = document.querySelector(".photograph-media");
-    cartesMedias.innerHTML = "";
-
-    let all_likes = 0;
-    let i = 0;
-    medias.forEach((media)=> {
-        if (media.photographerId == photographerId){
-            const mediaModel = mediaListFactory (media);
-            const userMediaDOM = mediaModel.mediasCardDOM();
-            cartesMedias.appendChild(userMediaDOM);
-
-            all_likes += media.likes;
-        }
-    })
+    displayPhotographerMedia(medias, photographerId);
+    likeClick();
 } 
 
+//************LIKE FUNCTION************//
 function likeClick()
 {
     const hearts = document.querySelectorAll(".heart");
     hearts.forEach(e => {
-        //EVENEMENT AU CLICK
         e.addEventListener("click", function(){
             const nbreLike = e.parentElement.children[1];
             nbreLike.textContent++;
             let all_likes = document.getElementById("all-likes");
             all_likes.innerHTML++; 
+            e.removeEventListener("click",arguments.callee);
         });
-    
-        //EVENEMENT AU CLAVIER AVEC TOUCHE ENTREE
-        e.addEventListener("keypress", function(){
-    
+        e.addEventListener("keydown", function(){
             const nbreLike = e.parentElement.children[1];
-        
             nbreLike.textContent++;
             let all_likes = document.getElementById("all-likes");
-            all_likes.innerHTML++;                  
+            all_likes.innerHTML++; 
+            e.removeEventListener("keydown",arguments.callee);
         });
     });
 }
