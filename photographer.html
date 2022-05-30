@@ -15,6 +15,39 @@
     <main id="main">
       <div class="photograph-header">
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <div id="contact_modal">
+          <div class="modal">
+            <div class="contact_name" alt ="contacter le photographe">
+              <h2 id="contact_modal-photographer-name">Contactez-moi</h2>
+              <a href=""><img src="assets/icons/close.svg" alt ="Close" class="contact_modal-exit"/></a>
+            </div>
+            <form id="form" name="reserve" action="index.html" method="get" onsubmit="return validate();">
+              <div class="formData" data-error="" data-error-visible="false">
+                <label for="first-name">Prénom</label>
+                <input class="text-control" type="text" id="first-name" name="prénom" /><br>
+              </div>
+              <div class="formData" data-error="" data-error-visible="false">
+                <label for="last-name">Nom</label>
+                <input class="text-control" type="text" id="last-name" name="nom" /><br>
+              </div>
+              <div class="formData" data-error="" data-error-visible="false">
+                <label for="email">E-mail</label>
+                <input class="text-control" type="text" id="email" name="email" /><br>
+              </div>
+              <div class="formData" data-error="" data-error-visible="false">
+                <label for="message">Votre message</label>
+                <input class="message" type="text" id="message" name="votre message" /><br>
+              </div>
+              <button class="send_btn" type="submit" aria-label="Send" id="send">Envoyer</button>
+            </form>
+            <div class="confirmation-bloc">
+              <div class="submitted-form">
+                <span class="close-modal-submit"></span>
+                  <div class="confirm-message"> Merci pour </br> votre message !</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="searcher-bloc">
         <div class="sort-selector" aria-label="selecteur de filtre">
@@ -33,12 +66,12 @@
                 <button class="lightbox_close" aria-label="Close dialog">
                     <i class="fa-solid fa-xmark fa-2x"></i>
                 </button>
-                <button id="previous" aria-label="Image précédente">
+                <button id="previous" class="previous" aria-label="Image précédente">
                     <i class="fa-solid fa-angle-left fa-3x"></i>
                 </button>
                 <div class ='media_display_lightbox'>
                     <img id='lightbox_image_photographer' class="lightbox_image" alt=""/>
-                    <video controls autoplay id="lightbox_video_photographer">
+                    <video controls autoplay id="lightbox_video_photographer" class = "lightbox_video" alt ="">
                         <track />
                     </video>
                     <p id="lightbox_title"></p>
@@ -51,39 +84,6 @@
       </div>
       <div class = informationsupp aria-label="nombre de likes et prix par jour"> </div>
     </main>
-    <div id="contact_modal">
-      <div class="modal">
-        <header>
-          <h2 id="contact_modal-photographer-name">Contactez-moi</h2>
-          <a href=""><img src="assets/icons/close.svg" alt ="Close" class="contact_modal-exit"/></a>
-        </header>
-        <form id="form" name="reserve" action="index.html" method="get" onsubmit="return validate();">
-          <div class="formData" data-error="" data-error-visible="false">
-            <label for="first-name">Prénom</label>
-            <input class="text-control" type="text" id="first-name" name="prénom" /><br>
-          </div>
-          <div class="formData" data-error="" data-error-visible="false">
-            <label for="last-name">Nom</label>
-            <input class="text-control" type="text" id="last-name" name="nom" /><br>
-          </div>
-          <div class="formData" data-error="" data-error-visible="false">
-            <label for="email">E-mail</label>
-            <input class="text-control" type="text" id="email" name="email" /><br>
-          </div>
-          <div class="formData" data-error="" data-error-visible="false">
-            <label for="message">Votre message</label>
-            <input class="message" type="text" id="message" name="votre message" /><br>
-          </div>
-          <button class="send_btn" type="submit" aria-label="Send" id="send">Envoyer</button>
-        </form>
-        <div class="confirmation-bloc">
-          <div class="submitted-form">
-            <span class="close-modal-submit"></span>
-              <div class="confirm-message"> Merci pour </br> votre message !</div>
-          </div>
-        </div>
-      </div>
-   </div>
     <script src="scripts/factories/photographer.js"></script>
     <script src="scripts/factories/media.js"></script>
     <script src="scripts/utils/searcher.js"></script>
