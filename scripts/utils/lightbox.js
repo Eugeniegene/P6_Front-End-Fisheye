@@ -1,58 +1,86 @@
-const closeBtn = document.querySelector(".lightbox_close");//bouton fermeture formulaire 
+const media = document.getElementsByClassName('media_display_lightbox');
+const lightbox =  document.getElementById("lightbox");
+const rightArrow = document.getElementById('next');
+const leftArrow = document.getElementById("previous");
 
 function lightboxMediaOpen(){
-    document.getElementById("lightbox").style.display = "block";
+  lightbox.style.display = "flex";
+  return lightbox;
+}
+
+//************Close lightbox section************//
+const closeBtn = document.querySelector(".lightbox_close");
+document.addEventListener("keydown", keydown, false);
+
+function closeLightbox() {
+  lightbox.style.display = "none";
 }
 
 closeBtn.onclick = function(){
-    document.getElementById("lightbox").style.display = "none";
+    closeLightbox();
 }
 
-const leftArrow = document.getElementById('previous');
-const rightArrow = document.getElementById('next');
+//************Previous and next button created************//
 
-const previousMedia = () => {
-    count = count - 1;
-    media = medias[count];
+const previousMedia = (count) => {
+  count = count - 1;
+  displayVideoImage(count);
+}
 
-    if (!media) {
-      count = medias.length - 1;
-      media = medias[count];
+const nextMedia = (count) => {
+count++;
+displayVideoImage(count);
+} 
+
+//************Right button lightbox section************//
+rightArrow.addEventListener("click", nextBtn, false);
+leftArrow.addEventListener("click", previousBtn, false);
+
+async function previousBtn(){
+  const positionMedia = lightbox.getAttribute("position");
+    previousMedia(positionMedia);
+}
+
+async function nextBtn(){
+  const positionMedia = lightbox.getAttribute("position");
+  nextMedia(positionMedia);
+}
+
+//************Lightbox display media and images function************//
+function displayVideoImage(count){
+  if(photographerMedias.length > count && count >= 0){
+    if(photographerMedias[count].image){
+      const img = document.getElementById("lightbox_image_photographer");
+      img.style.display="block";
+      img.setAttribute("tabindex", "4");
+      img.setAttribute("src", `assets/photographers/${photographerMedias[count].photographerId}/${photographerMedias[count].image}`);
+      const video_lightbox = document.getElementById("lightbox_video_photographer");
+      video_lightbox.style.display = "none";
+    } else if (photographerMedias[count].video){
+      const video = document.getElementById("lightbox_video_photographer");
+      video.style.display="block";
+      video.setAttribute("tabindex", "4");
+      video.setAttribute("src", `assets/photographers/${photographerMedias[count].photographerId}/${photographerMedias[count].video}`);
+      const image_lightbox = document.getElementById("lightbox_image_photographer");
+      image_lightbox.style.display = "none";
     }
+    const pictureTitle = document.getElementById('lightbox_title');
+    pictureTitle.textContent=photographerMedias[count].title;
+    lightbox.setAttribute("position",count);
+  }
 }
 
-//document.onkeydown = keyboardNav();
-
- handleKeyboard = (event) => {
-    const key = event.key;
-    if (key === 'ArrowRight') {
-      rightArrow.focus();
-      nextMedia();
-    } else if (key === 'ArrowLeft') {
-      previousMedia();
-      leftArrow.focus();
-    } else if (key === 'Escape') {
-      lightBoxCloseButton.focus();
-      hideLightbox();
-    }
-  };
-
-  document.addEventListener('keydown', handleKeyboard);
-
-function initPictureEvent()
-{
-    const pictures = document.querySelectorAll("img");
-    console.log('photo' + pictures);
-    pictures.forEach(e => {
-        e.addEventListener("click", function(){
-            document.getElementById("lightbox").style.display = "block";
-            const img = document.getElementById("lightbox_image_photographer");
-            img.setAttribute("tabindex", "4");
-           
-            const pictureTitle = document.getElementById('lightbox_title');
-            /************** A MODIFIER   */
-
-        })
-    })
+function keydown(e) {
+  if (e.keyCode == 27) {
+    closeLightbox();
+  }
+  if(e.keyCode == 37) {
+    previousBtn();
+  }
+  if (e.keyCode == 39) {
+    nextBtn();
+  }
+  //if (e.keyCode == 13){
+    //lightboxMediaOpen();
+  //}
 }
-
