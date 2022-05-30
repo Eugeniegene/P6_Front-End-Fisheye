@@ -1,9 +1,11 @@
-async function getPhotographers () {                                  //récupération du JSON
+//************FETCHING JSON DATA************//
+async function getDataJson () {                                  
     const response = await fetch ("data/photographers.json");
     const photographers = await response.json();
     return photographers;
 }
 
+//************DISPLAYING PHOTOGRAPHER DATA************//
 async function displayData(photographers) {
     const photographersSection = document.querySelector(".photographer_section");
 
@@ -14,9 +16,9 @@ async function displayData(photographers) {
     });
 };
 
+//************FETCH PHOTOGRAPHER DATA************//
 async function init() {
-    // Récupère les datas des photographes
-    const { photographers } = await getPhotographers();
+    const { photographers } = await getDataJson();
     displayData(photographers);
 };
 
