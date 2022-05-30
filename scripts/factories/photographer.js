@@ -5,7 +5,10 @@ function photographerFactory(data) {
     const alt = `Portrait de ${name}`;
     const pageLink = "photographer.html?id=" + id;
 
-    function getUserCard() {//création de l'élément, il comportera toutes les données du photographe sélectionné
+    //************USER CARD CREATED ************//
+    //All data regarding selected photographer will be selected from their id, creating their inital card on the main page//
+
+    function getUserCard() {
         const article = document.createElement( 'article' );
         const urlPhotographer = document.createElement( 'a' );
         urlPhotographer.classList.add("photographer-head");
@@ -48,6 +51,8 @@ function photographerFactory(data) {
         return (article);
     }
     
+    //************ALL PHOTOGRAPHER ON PHOTOGRAPHER PAGE************//
+    //The following information will be available by clicking on a card that will display all photographer data//
     function displayPhotographerData() {
 
         const photographerData = document.createElement('div');
@@ -75,9 +80,13 @@ function photographerFactory(data) {
         photographerData.appendChild(location);
         photographerData.appendChild(citation);
 
+        document.getElementById("contact_modal-photographer-name").innerHTML = 
+        document.getElementById("contact_modal-photographer-name").innerHTML + "<br/>" + data.name; 
+
         return photographerData;
     }
 
+    //************BOTTOM BANNER WITH ALL LIKES AND PRICE/DAY************//
     function informationsupp(){
     
         const informationSuppl = document.querySelector(".informationsupp");
@@ -96,5 +105,5 @@ function photographerFactory(data) {
         
     }
 
-    return { name, picture, getUserCard, displayPhotographerData,informationsupp }
+    return { name, picture, getUserCard, displayPhotographerData, informationsupp }
 }
