@@ -1,3 +1,4 @@
+//************GENERAL FUNCTIONS************//
 function displayModal() {
     const modal = document.getElementById("contact_modal");
 	modal.style.display = "block";
@@ -7,32 +8,42 @@ function closeModal() {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "none";
 }
+function keydown(e) {
+    if (e.keyCode == 27) {
+      closeModal();
+    }
+}
 
-//CHAMPS
+document.addEventListener("keydown", keydown, false);
+
+//************FORM FIELDS************//
 const formName = document.getElementById('contact_modal-photographer-name');
-const firstName = document.getElementById('first-name');//prénom
-const lastName = document.getElementById('last-name');//nom
-const email = document.getElementById('email');//email
-const message = document.getElementById('message');//message
-const confirmationBloc = document.getElementsByClassName('confirmation-bloc');// bloc contenant le message de confirmation
-const confirmationMsg = document.getElementsByClassName('confirm-message');// message de confirmation
-const submiBtn = document.querySelector("send_btn");//bouton envoi formulaire
+const firstName = document.getElementById('first-name');
+const lastName = document.getElementById('last-name');
+const email = document.getElementById('email');
+const message = document.getElementById('message');
+const confirmationBloc = document.getElementsByClassName('confirmation-bloc');
+const confirmationMsg = document.getElementsByClassName('confirm-message');
+const submiBtn = document.querySelector("send_btn");
 
 
-//ERREURS 
-const formDataFirstName = document.querySelector("#first-name").parentNode;//renvoi vers le parent de l'id du prénom
-const formDataLastName = document.querySelector("#last-name").parentNode;// renvoi vers le parent de l'id du nom
-const formDataEmail = document.querySelector("#email").parentNode; //renvoi vers le parent de l'email
-const formDataMessage = document.querySelector("#message").parentNode; //renvoi vers le parent de l'email 
+//************CAUGHT ERRORS - DOM NOT VALIDATED************//
+const formDataFirstName = document.querySelector("#first-name").parentNode;
+const formDataLastName = document.querySelector("#last-name").parentNode;
+const formDataEmail = document.querySelector("#email").parentNode; 
+const formDataMessage = document.querySelector("#message").parentNode; 
 
-//envoyer un formulaire 
+
+//************SEND FORM FUNCTION************//
+//*prevent default will avoid sending an empty form*//
 form.addEventListener("submit", function (e) {
-    e.preventDefault();//formule permettant d'éviter d'envoyer un formulaire vide 
-    validate();//fonction valider 
+    e.preventDefault();
+    validate();
   });
 
-//DONNES DU FORMULAIRE
+//************FORM DATA AND ERROR MESSAGES ************//
 function validateFirstName(firstName) {
+    console.log(firstName.value);
     if (firstName.value == "" || firstName.value == null ) {
         formDataFirstName.setAttribute(
             "data-error",
@@ -56,6 +67,7 @@ function validateFirstName(firstName) {
     }
   }
   function validateLastName(lastName) {
+    console.log(lastName.value);
     if (lastName.value == "") {
         formDataLastName.setAttribute(
             "data-error",
@@ -78,6 +90,7 @@ function validateFirstName(firstName) {
     }
   }
   function validateEmail(email) {
+    console.log(email.value);
       if (email.value == "") {
           formDataEmail.setAttribute(
               "data-error",
@@ -100,6 +113,7 @@ function validateFirstName(firstName) {
       }
   }
   function validateMessage(message) {
+    console.log(message.value);
     if (message.value == "") {
         formDataMessage.setAttribute(
             "data-error",
@@ -114,7 +128,7 @@ function validateFirstName(firstName) {
         return true;
     }
 }
-
+//************VALIDATE FUNCTION************//
   function validate() {
     let isFormValid = [];
     isFormValid.push(validateFirstName(firstName)); 
