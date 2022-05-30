@@ -4,22 +4,24 @@ function mediaListFactory(data) {
     const mediasImages = `assets/photographers/${photographerId}/${image}`;
     const mediasVideos = `assets/photographers/${photographerId}/${video}`;
 
-    /********************NOUVEAU TEST******************* */
-    function mediasCardDOM() {
+    //************MEDIA AND PHOTOGRAPHER DATA DISPLAYED************//
+    function mediasCardDOM(position) {
         
         const carteMedia = document.createElement("article");
         carteMedia.classList.add ("carte_media");
-        carteMedia.setAttribute("title", "Ouverture lightbox");
+        carteMedia.setAttribute("title", "Cliquez ici pour ouvrir la lightbox");
         
+        //************LIGHTBOX DATA************//
         if("video" in data){
             const photoVideo = document.createElement("video");
             const source = document.createElement("source");
             photoVideo.addEventListener("play", async function(){
-                document.getElementById("lightbox").style.display = "block";
+                const lightbox = lightboxMediaOpen();
                 const video = document.getElementById("lightbox_video_photographer");
                 video.style.display="block";
                 video.setAttribute("tabindex", "4");
                 video.setAttribute("src",mediasVideos);
+                lightbox.setAttribute("position",position);
                 const pictureTitle = document.getElementById('lightbox_title');
                 pictureTitle.textContent=title;
 
@@ -36,16 +38,16 @@ function mediaListFactory(data) {
             
             photoVideo.appendChild(source);
             carteMedia.appendChild(photoVideo);
-            
 
         }
         else {
             const img = document.createElement( "img" );
             img.addEventListener("click", function(){
-                document.getElementById("lightbox").style.display = "block";
+                const lightbox = lightboxMediaOpen();
                 const img = document.getElementById("lightbox_image_photographer");
                 img.setAttribute("tabindex", "4");
-                img.setAttribute("src",mediasImages);
+                img.setAttribute("src", mediasImages);
+                lightbox.setAttribute("position",position);
                 img.style.display="block";
                 const pictureTitle = document.getElementById('lightbox_title');
                 pictureTitle.textContent=title;
@@ -60,7 +62,7 @@ function mediaListFactory(data) {
 
             carteMedia.appendChild(img);
         }
-
+        //*********************************************//
         const infoPhoto = document.createElement("div");
         const h2 = document.createElement( "h2" );
         const nbreLike = document.createElement("span");
@@ -85,11 +87,5 @@ function mediaListFactory(data) {
 
         return carteMedia;
     }
-    return { id, date, likes, title, image, video, mediasCardDOM }
-}
-
-async function getPhotographers () {                                  
-    const response = await fetch ("data/photographers.json");
-    const photographers = await response.json();
-    return photographers;
+    return { id, photographerId, date, likes, title, image, video, mediasCardDOM }
 }
