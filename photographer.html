@@ -14,10 +14,10 @@
     </header>
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact_button" onclick="displayModal()" type="submit">Contactez-moi</button>
         <div id="contact_modal">
           <div class="modal">
-            <div class="contact_name" alt ="contacter le photographe">
+            <div class="contact_name" aria-label ="contacter le photographe">
               <h2 id="contact_modal-photographer-name">Contactez-moi</h2>
               <a href=""><img src="assets/icons/close.svg" alt ="Close" class="contact_modal-exit"/></a>
             </div>
@@ -43,7 +43,8 @@
             <div class="confirmation-bloc">
               <div class="submitted-form">
                 <span class="close-modal-submit"></span>
-                  <div class="confirm-message"> Merci pour </br> votre message !</div>
+                  <div class="confirm-message"> Merci pour <br> 
+                    votre message !</div>
               </div>
             </div>
           </div>
@@ -61,25 +62,24 @@
       </div>
       <div class="photograph-media">
       </div>
-      <div id="lightbox"aria-label="Image closeup view" role="dialog">
-            <div class="lightbox_content">
-                <button class="lightbox_close" aria-label="Close dialog">
-                    <em class="fa-solid fa-xmark fa-2x"></em>
-                </button>
-                <button id="previous" class="previous" aria-label="Image précédente">
-                    <em class="fa-solid fa-angle-left fa-3x"></em>
-                </button>
-                <div class ='media_display_lightbox'>
-                    <img id='lightbox_image_photographer' class="lightbox_image" alt=""/>
-                    <video controls autoplay id="lightbox_video_photographer" class = "lightbox_video" alt ="">
-                        <track />
-                    </video>
-                    <p id="lightbox_title"></p>
-                </div>
-                <button id="next" aria-label="Image suivante">
-                    <em class="fa-solid fa-angle-right fa-3x"></em>
-                </button>
-            </div>
+      <div id="lightbox" aria-label="Image closeup view" role="dialog">
+        <div class="lightbox_content">
+              <button class="lightbox_close" aria-label="Close dialog">
+                <em class="fa-solid fa-xmark fa-2x"></em>
+              </button>
+              <button id="previous" class="previous" aria-label="Image précédente">
+                <em class="fa-solid fa-angle-left fa-3x"></em>
+              </button>
+              <div class ='media_display_lightbox'>
+                <img src="assets/photographers/" id='lightbox_image_photographer' class="lightbox_image" alt="image-lightbox">
+                <video controls autoplay id="lightbox_video_photographer" class= "lightbox_video" >
+                  <track src="assets/photographers/"/>
+                </video>
+                <p id="lightbox_title"></p>
+              </div>
+              <button id="next" aria-label="Image suivante">
+                <em class="fa-solid fa-angle-right fa-3x"></em>
+              </button>
         </div>
       </div>
       <div class = informationsupp aria-label="nombre de likes et prix par jour"> </div>
