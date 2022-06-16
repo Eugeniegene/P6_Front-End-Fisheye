@@ -1,6 +1,14 @@
+// mediaListFactory is defined in photographer.js file
+// eslint-disable-next-line no-unused-vars
 function mediaListFactory(data) {
   const {
-    id, photographerId, title, image, video, likes, date,
+    id,
+    photographerId,
+    title,
+    image,
+    video,
+    likes,
+    date,
   } = data;
 
   const mediasImages = `assets/photographers/${photographerId}/${image}`;
@@ -110,4 +118,3 @@ function mediaListFactory(data) {
     id, photographerId, date, likes, title, image, video, mediasCardDOM,
   };
 }
-mediaListFactory();
