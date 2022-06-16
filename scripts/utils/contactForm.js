@@ -1,5 +1,6 @@
 // all console.logs are still visible as requested
 /* eslint-disable no-console */
+const contactBtn = document.querySelector('.contact_button');
 
 //* ***********GENERAL FUNCTIONS************//
 function displayModal() {
@@ -7,12 +8,9 @@ function displayModal() {
   modal.style.display = 'block';
 }
 
-function clickModal() {
-  const contactBtn = document.getElementsByClassName('contact_button');
-  contactBtn.addEventListener('click');
+contactBtn.addEventListener('click', () => {
   displayModal();
-}
-clickModal();
+});
 
 function closeModal() {
   const modal = document.getElementById('contact_modal');
