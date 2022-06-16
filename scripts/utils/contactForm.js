@@ -1,14 +1,18 @@
+// all console.logs are still visible as requested
 /* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
-/* eslint-disable no-shadow */
-/* eslint-disable prefer-const */
-/* eslint-disable no-use-before-define */
+
 //* ***********GENERAL FUNCTIONS************//
 function displayModal() {
   const modal = document.getElementById('contact_modal');
   modal.style.display = 'block';
 }
+
+function clickModal() {
+  const contactBtn = document.getElementsByClassName('contact_button');
+  contactBtn.addEventListener('click');
+  displayModal();
+}
+clickModal();
 
 function closeModal() {
   const modal = document.getElementById('contact_modal');
@@ -19,10 +23,10 @@ function keydown(e) {
     closeModal();
   }
 }
-
 document.addEventListener('keydown', keydown, false);
 
 //* ***********FORM FIELDS************//
+const form = document.getElementById('contact_modal');
 const formName = document.getElementById('contact_modal-photographer-name');
 const firstName = document.getElementById('first-name');
 const lastName = document.getElementById('last-name');
@@ -36,15 +40,8 @@ const formDataLastName = document.querySelector('#last-name').parentNode;
 const formDataEmail = document.querySelector('#email').parentNode;
 const formDataMessage = document.querySelector('#message').parentNode;
 
-//* ***********SEND FORM FUNCTION************//
-//* prevent default will avoid sending an empty form*//
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  validate();
-});
-
 //* ***********FORM DATA AND ERROR MESSAGES ************//
-function validateFirstName(firstName) {
+function validateFirstName() {
   console.log(firstName.value);
   if (firstName.value === '' || firstName.value == null) {
     formDataFirstName.setAttribute(
@@ -66,7 +63,7 @@ function validateFirstName(firstName) {
   formDataFirstName.removeAttribute('data-error-visible');
   return true;
 }
-function validateLastName(lastName) {
+function validateLastName() {
   console.log(lastName.value);
   if (lastName.value === '') {
     formDataLastName.setAttribute(
@@ -88,7 +85,7 @@ function validateLastName(lastName) {
   formDataLastName.removeAttribute('data-error-visible');
   return true;
 }
-function validateEmail(email) {
+function validateEmail() {
   console.log(email.value);
   if (email.value === '') {
     formDataEmail.setAttribute(
@@ -110,7 +107,7 @@ function validateEmail(email) {
   formDataEmail.removeAttribute('data-error-visible');
   return true;
 }
-function validateMessage(message) {
+function validateMessage() {
   console.log(message.value);
   if (message.value === '') {
     formDataMessage.setAttribute(
@@ -125,9 +122,10 @@ function validateMessage(message) {
   formDataMessage.removeAttribute('data-error-visible');
   return true;
 }
+
 //* ***********VALIDATE FUNCTION************//
 function validate() {
-  let isFormValid = [];
+  const isFormValid = [];
   isFormValid.push(validateFirstName(firstName));
   isFormValid.push(validateLastName(lastName));
   isFormValid.push(validateEmail(email));
@@ -139,3 +137,9 @@ function validate() {
     confirmationMsg[0].style.display = 'block';
   }
 }
+//* ***********SEND FORM FUNCTION************//
+//* prevent default will avoid sending an empty form*//
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  validate();
+});
