@@ -1,6 +1,14 @@
+// photographerFactory is defined in index.js file
+// eslint-disable-next-line no-unused-vars
 function photographerFactory(data) {
   const {
-    name, id, city, country, tagline, price, portrait,
+    name,
+    id,
+    city,
+    country,
+    tagline,
+    price,
+    portrait,
   } = data;
 
   const picture = `assets/photographers/idPortrait/${portrait}`;
@@ -106,4 +114,3 @@ function photographerFactory(data) {
     name, picture, getUserCard, displayPhotographerData, informationsupp,
   };
 }
-photographerFactory();
