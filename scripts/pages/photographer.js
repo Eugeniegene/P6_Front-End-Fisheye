@@ -1,11 +1,4 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable prefer-const */
-/* eslint-disable no-undef */
-/* eslint-disable eqeqeq */
-/* eslint-disable no-unused-vars */
 const photographersSection = document.querySelector('.photograph-header');
-const photographersMedia = document.querySelector('.photograph-media');
-let photographerMedias = [];
 
 //* ***********FETCHING JSON DATA************//
 async function getDataJson() {
@@ -18,10 +11,14 @@ async function getDataJson() {
 async function displayData(photographers, medias, iDPhotographer) {
   photographers.forEach((photographer) => {
     if (iDPhotographer == photographer.id) {
+      // photographerFactory is defined in photographer.js
+      // eslint-disable-next-line no-undef
       const photographerModel = photographerFactory(photographer);
       const displayPhotographerData = photographerModel.displayPhotographerData();
       photographerModel.informationsupp();
       photographersSection.appendChild(displayPhotographerData);
+      // displayDataMedia is defined in searcher.js
+      // eslint-disable-next-line no-undef
       displayDataMedia(medias, iDPhotographer, 'populaire');
     }
   });
@@ -44,6 +41,8 @@ const iDPhotographerStart = urlArray[urlArray.length - 1];
 const menuSelect = document.getElementById('searcher-box');
 menuSelect.addEventListener('change', async (e) => {
   const { media } = await getDataJson();
+  // displayDataMedia is defined in searcher.js
+  // eslint-disable-next-line no-undef
   displayDataMedia(media, iDPhotographerStart, e.target.value);
 });
 
