@@ -1,12 +1,10 @@
-/* eslint-disable object-curly-newline */
-/* eslint-disable operator-linebreak */
-/* eslint-disable no-unused-vars */
 function photographerFactory(data) {
-  const { name, id, city, country, tagline, price, portrait } = data;
+  const {
+    name, id, city, country, tagline, price, portrait,
+  } = data;
 
   const picture = `assets/photographers/idPortrait/${portrait}`;
   const alt = `Portrait de ${name}`;
-  const pageLink = `photographer.html?id=${id}`;
 
   //* ***********USER CARD CREATED ************//
   //* All data regarding selected photographer will be selected from
@@ -82,8 +80,7 @@ function photographerFactory(data) {
     photographerData.appendChild(location);
     photographerData.appendChild(citation);
 
-    document.getElementById('contact_modal-photographer-name').innerHTML =
-    `${document.getElementById('contact_modal-photographer-name').innerHTML}<br/>${data.name}`;
+    document.getElementById('contact_modal-photographer-name').innerHTML = `${document.getElementById('contact_modal-photographer-name').innerHTML}<br/>${data.name}`;
 
     return photographerData;
   }
@@ -109,3 +106,4 @@ function photographerFactory(data) {
     name, picture, getUserCard, displayPhotographerData, informationsupp,
   };
 }
+photographerFactory();
