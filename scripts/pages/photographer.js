@@ -10,7 +10,7 @@ async function getDataJson() {
 //* ***********DISPLAY DATA FUNCTION************//
 async function displayData(photographers, medias, iDPhotographer) {
   photographers.forEach((photographer) => {
-    if (iDPhotographer == photographer.id) {
+    if (Number(iDPhotographer) === photographer.id) {
       // photographerFactory is defined in photographer.js
       // eslint-disable-next-line no-undef
       const photographerModel = photographerFactory(photographer);
