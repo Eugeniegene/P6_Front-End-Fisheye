@@ -24,7 +24,7 @@ function keydown(e) {
 document.addEventListener('keydown', keydown, false);
 
 //* ***********FORM FIELDS************//
-const form = document.getElementById('contact_modal');
+const form = document.getElementById('form');
 const formName = document.getElementById('contact_modal-photographer-name');
 const firstName = document.getElementById('first-name');
 const lastName = document.getElementById('last-name');
@@ -130,6 +130,7 @@ function validate() {
   isFormValid.push(validateMessage(message));
 
   if (!isFormValid.includes(false)) {
+    console.log('toto');
     form.style.display = 'none';
     formName.style.display = 'none';
     confirmationMsg[0].style.display = 'block';
