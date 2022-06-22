@@ -46,6 +46,8 @@ function mediaListFactory(data) {
       source.setAttribute('src', mediasVideos);
       source.setAttribute('alt', mediasVideos);
       source.setAttribute('type', 'video/mp4');
+      source.setAttribute('alt', `${title}`);
+      source.className = 'mediaVideo';
 
       photoVideo.appendChild(source);
       carteMedia.appendChild(photoVideo);
