@@ -84,7 +84,7 @@ function mediaListFactory(data) {
       });
       img.setAttribute('tabindex', '4');
       img.setAttribute('src', mediasImages);
-      img.setAttribute('alt', 'photo', ` ${title}`);
+      img.setAttribute('alt', `${title}`);
       img.className = 'mediaImg';
 
       carteMedia.appendChild(img);
