@@ -130,7 +130,6 @@ function validate() {
   isFormValid.push(validateMessage(message));
 
   if (!isFormValid.includes(false)) {
-    console.log('toto');
     form.style.display = 'none';
     formName.style.display = 'none';
     confirmationMsg[0].style.display = 'block';
